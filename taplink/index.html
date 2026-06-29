@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Château Del Mare — материалы для брокеров</title>
+  <meta name="description" content="Шахматка, презентации, планировки и документы коттеджного посёлка Château Del Mare">
+  <meta property="og:title" content="Château Del Mare">
+  <meta property="og:description" content="Все материалы по объекту в одном месте">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a1628">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep: #071018;
+      --bg-mid: #0f2438;
+      --gold: #c9a962;
+      --gold-light: #e8d5a3;
+      --gold-dim: rgba(201, 169, 98, 0.35);
+      --cream: #f4efe6;
+      --cream-muted: rgba(244, 239, 230, 0.62);
+      --glass: rgba(255, 255, 255, 0.045);
+      --glass-border: rgba(255, 255, 255, 0.09);
+      --glass-hover: rgba(255, 255, 255, 0.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100dvh;
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--cream);
+      background: var(--bg-deep);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── animated background ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg__gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26, 74, 110, 0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 100% 50%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 0% 80%, rgba(15, 60, 90, 0.4) 0%, transparent 50%),
+        linear-gradient(180deg, #071018 0%, #0c1e30 40%, #071018 100%);
+    }
+
+    .bg__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    .bg__orb--1 {
+      width: 420px; height: 420px;
+      top: -8%; left: -10%;
+      background: rgba(30, 90, 130, 0.25);
+    }
+
+    .bg__orb--2 {
+      width: 320px; height: 320px;
+      bottom: 10%; right: -8%;
+      background: rgba(201, 169, 98, 0.12);
+      animation-delay: -6s;
+      animation-duration: 22s;
+    }
+
+    .bg__orb--3 {
+      width: 200px; height: 200px;
+      top: 45%; left: 55%;
+      background: rgba(40, 120, 160, 0.15);
+      animation-delay: -12s;
+      animation-duration: 16s;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, -20px) scale(1.08); }
+    }
+
+    .bg__noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
+
+    /* ── layout ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+
+    /* ── header ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeUp 0.9s var(--ease) both;
+    }
+
+    .hero__crest {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(201,169,98,0.18), rgba(201,169,98,0.04));
+      border: 1px solid var(--gold-dim);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 40px rgba(201, 169, 98, 0.12);
+    }
+
+    .hero__crest svg {
+      width: 36px;
+      height: 36px;
+      color: var(--gold);
+    }
+
+    .hero__title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 7vw, 2.6rem);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero__sub {
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    /* ── featured CTA ── */
+    .featured {
+      margin-bottom: 36px;
+      animation: fadeUp 0.9s var(--ease) 0.1s both;
+    }
+
+    .featured__link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 22px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--bg-deep);
+      background: linear-gradient(135deg, #dcc07a 0%, #c9a962 45%, #a8893f 100%);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.25) inset,
+        0 16px 48px rgba(201, 169, 98, 0.28),
+        0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured__link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.22) 50%, transparent 60%);
+      transform: translateX(-100%);
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 70% { transform: translateX(-100%); }
+      100%     { transform: translateX(100%); }
+    }
+
+    .featured__link:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.3) inset,
+        0 20px 56px rgba(201, 169, 98, 0.38),
+        0 6px 16px rgba(0,0,0,0.35);
+    }
+
+    .featured__link:active { transform: translateY(0); }
+
+    .featured__icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(7, 16, 24, 0.18);
+      display: grid;
+      place-items: center;
+    }
+
+    .featured__icon svg { width: 22px; height: 22px; }
+
+    .featured__text { flex: 1; min-width: 0; }
+
+    .featured__label {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .featured__hint {
+      font-size: 0.8125rem;
+      opacity: 0.72;
+      margin-top: 2px;
+    }
+
+    .featured__arrow {
+      flex-shrink: 0;
+      opacity: 0.6;
+      transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+
+    .featured__link:hover .featured__arrow {
+      transform: translateX(3px);
+      opacity: 1;
+    }
+
+    /* ── sections ── */
+    .section {
+      margin-bottom: 28px;
+      animation: fadeUp 0.9s var(--ease) both;
+    }
+
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.2s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+
+    .section__label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      padding-left: 4px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--cream);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition:
+        background 0.3s var(--ease),
+        border-color 0.3s var(--ease),
+        transform 0.3s var(--ease),
+        box-shadow 0.3s var(--ease);
+    }
+
+    .link:hover {
+      background: var(--glass-hover);
+      border-color: rgba(201, 169, 98, 0.25);
+      transform: translateX(4px);
+      box-shadow: -3px 0 0 var(--gold);
+    }
+
+    .link:active { transform: translateX(2px); }
+
+    .link__icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(201, 169, 98, 0.1);
+      border: 1px solid rgba(201, 169, 98, 0.15);
+      display: grid;
+      place-items: center;
+      color: var(--gold-light);
+    }
+
+    .link__icon svg { width: 18px; height: 18px; }
+
+    .link__body { flex: 1; min-width: 0; }
+
+    .link__title {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .link__sub {
+      font-size: 0.75rem;
+      color: var(--cream-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .link__chev {
+      flex-shrink: 0;
+      color: var(--cream-muted);
+      opacity: 0.5;
+      transition: opacity 0.3s, transform 0.3s var(--ease);
+    }
+
+    .link:hover .link__chev {
+      opacity: 1;
+      transform: translateX(2px);
+      color: var(--gold);
+    }
+
+    /* ── footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--glass-border);
+      animation: fadeUp 0.9s var(--ease) 0.3s both;
+    }
+
+    .footer__brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.125rem;
+      color: var(--cream-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer__note {
+      font-size: 0.75rem;
+      color: rgba(244, 239, 230, 0.35);
+      margin-top: 6px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg" aria-hidden="true">
+    <div class="bg__gradient"></div>
+    <div class="bg__orb bg__orb--1"></div>
+    <div class="bg__orb bg__orb--2"></div>
+    <div class="bg__orb bg__orb--3"></div>
+    <div class="bg__noise"></div>
+  </div>
+
+  <main class="page">
+
+    <header class="hero">
+      <div class="hero__crest">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
+          <path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/>
+        </svg>
+      </div>
+      <h1 class="hero__title">Château <em>Del Mare</em></h1>
+      <p class="hero__sub">Коттеджный посёлок</p>
+    </header>
+
+    <div class="featured">
+      <a class="featured__link" href="https://docs.google.com/spreadsheets/d/1FRJ8-OYDnh6rzqLftm0L_45Fmkq4m9HU4XjXMfMu7rc/edit" target="_blank" rel="noopener">
+        <span class="featured__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        </span>
+        <span class="featured__text">
+          <span class="featured__label">Шахматка</span>
+          <span class="featured__hint">Лоты, цены, калькулятор</span>
+        </span>
+        <span class="featured__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <section class="section">
+      <p class="section__label">Презентации</p>
+      <div class="links">
+        <a class="link" href="https://disk.yandex.ru/d/SjE1yCQJlggeIg" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Презентации и каталоги</span>
+            <span class="link__sub">Для брокеров и клиентов</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+        <a class="link" href="https://disk.yandex.ru/d/aJDG8UTCpeqF2g" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Каталог домов</span>
+            <span class="link__sub">Проекты, площади, цены</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+        <a class="link" href="https://disk.yandex.ru/d/p3mR9maWFVInSw" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Планировки домов</span>
+            <span class="link__sub">1- и 2-этажные проекты</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+        <a class="link" href="https://disk.yandex.ru/d/ZSRkVFMyuGDzHg" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Генплан и участки</span>
+            <span class="link__sub">Схема посёлка, площади</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section__label">Медиа</p>
+      <div class="links">
+        <a class="link" href="https://disk.yandex.ru/d/0AggEh__-Fgo9A" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Видео</span>
+            <span class="link__sub">Обзоры и съёмки объекта</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+        <a class="link" href="https://disk.yandex.ru/d/moVHOVaGjir-6w" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Рум-тур дома</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section__label">Документы</p>
+      <div class="links">
+        <a class="link" href="https://disk.yandex.ru/d/h3munGuJikbkbA/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F?path=%2F%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0%D1%8F%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="9" y1="9" x2="15" y2="9"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">База знаний</span>
+            <span class="link__sub">Ответы на частые вопросы</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+        <a class="link" href="https://disk.yandex.ru/d/CLcT71RlnsKeXg" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Документы по объекту</span>
+            <span class="link__sub">Разрешительная документация</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+        <a class="link" href="https://disk.yandex.ru/d/h3munGuJikbkbA" target="_blank" rel="noopener">
+          <span class="link__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+          <span class="link__body">
+            <span class="link__title">Все материалы</span>
+            <span class="link__sub">Полная папка на Яндекс.Диске</span>
+          </span>
+          <span class="link__chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="footer__brand">Château Del Mare</p>
+      <p class="footer__note">Материалы для партнёров</p>
+    </footer>
+
+  </main>
+</body>
+</html>
